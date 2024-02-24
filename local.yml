@@ -39,6 +39,20 @@
         dest: /home/ben/dotfiles/.oh-my-zsh/custom/plugins/zsh-autosuggestions
         clone: yes
         update: yes
+          
+    - name: download zsh-syntax-highlighting
+      git:
+        repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        dest: /home/ben/dotfiles/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        clone: yes
+        update: yes
+          
+    - name: download powerlevel10k theme
+      git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: /home/ben/dotfiles/.oh-my-zsh/custom/themes/powerlevel10k
+        clone: yes
+        update: yes
 
     - name: stow dotfiles
       command: stow .
