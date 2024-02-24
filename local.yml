@@ -9,15 +9,15 @@
         update_cache: yes
 
   tasks:
-   - name: install neovim
-     package:
+    - name: install neovim
+      package:
         name: neovim
 
-   - name: autoclean
-     apt:
-       autoclean: yes
+    - name: autoclean
+      apt:
+        autoclean: yes
 
-   - name: autoremove orphan packages
-     apt:
-       autoremove: yes
-       purge: yes
+    - name: autoremove orphan packages
+      apt:
+        autoremove: yes
+        purge: yes
