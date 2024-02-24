@@ -61,15 +61,22 @@
       args:
         chdir: /home/ben/dotfiles/
 
-    - name: download jetbrains mono nerd font
-      get_url:
-        url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
-        dest: /home/ben/
+    # - name: Create JetBrains Mono Nerd Font dir
+    #   file:
+    #     path: /home/ben/JetBrainsMono
+    #     state: directory
+
+    - name: Create ~/.fonts
+      file:
+        path: /home/ben/.fonts
+        state: directory
 
     - name: unzip jetbrains mono nerd font
       unarchive:
-        src: /home/ben/JetBrainsMono.zip
-        dest: /home/ben/JetBrainsMono
+        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
+        dest: /home/ben/
+        creates: JetBrainsMono
+        remote_src: yes
 
     - name: install jetbrains mono nerd font
       args:
