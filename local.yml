@@ -83,4 +83,10 @@
         chdir: /home/ben
       shell: |
         cp JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf .fonts/
+        fc-cache -fv
+
+    - name: snap install neovim
+      community.general.snap:
+        name: nvim
+        classic: true
 
