@@ -10,10 +10,12 @@
 
   tasks:
     - name: install packages
+      state: latest
       package:
         name: 
           - neovim
           - zsh
+          - stow
 
     - name: autoclean
       apt:
@@ -24,9 +26,15 @@
         autoremove: yes
         purge: yes
 
-    - name: Ensure user Ben exists
-      ansible.builtin.user:
-        name: ben
-        state: present
-        shell: /bin/zsh
-        create_home: yes
+    - name: download dotfiles
+      git:
+        repo: 'https://github.com/ben-hampson/dotfiles.git'
+        dest: '~/dotfiles/'
+        clone: yes
+        update: yes
+
+    - name: stow dotfiles
+      command: stow .
+      args:
+        chdir: '~/dotfiles/'
+
