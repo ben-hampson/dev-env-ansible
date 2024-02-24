@@ -3,8 +3,21 @@
   connection: true
   become: true
 
+  pre_tasks:
+    - name: pre-run | update package cache
+      apt:
+        update_cache: yes
+
   tasks:
    - name: install neovim
      package:
         name: neovim
 
+   - name: autoclean
+     apt:
+       autoclean: yes
+
+   - name: autoremove orphan packages
+     apt:
+       autoremove: yes
+       purge: yes
