@@ -33,6 +33,13 @@
         clone: yes
         update: yes
 
+    - name: download zsh-autosuggestions
+      git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions.git
+        dest: /home/ben/dotfiles/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        clone: yes
+        update: yes
+
     - name: stow dotfiles
       command: stow .
       args:
