@@ -82,6 +82,5 @@
       args:
         chdir: /home/ben
       shell: |
-        mkdir -p .fonts
         cp JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf .fonts/
 
