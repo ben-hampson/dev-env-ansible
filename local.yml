@@ -61,10 +61,10 @@
       args:
         chdir: /home/ben/dotfiles/
 
-    # - name: Create JetBrains Mono Nerd Font dir
-    #   file:
-    #     path: /home/ben/JetBrainsMono
-    #     state: directory
+    - name: Create JetBrains Mono Nerd Font dir
+      file:
+        path: /home/ben/JetBrainsMono
+        state: directory
 
     - name: Create ~/.fonts
       file:
@@ -74,8 +74,8 @@
     - name: unzip jetbrains mono nerd font
       unarchive:
         src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
-        dest: /home/ben/
-        creates: JetBrainsMono
+        dest: /home/ben/JetBrainsMono
+        creates: /home/ben/JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf 
         remote_src: yes
 
     - name: install jetbrains mono nerd font
