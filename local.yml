@@ -9,9 +9,11 @@
         update_cache: yes
 
   tasks:
-    - name: install neovim
+    - name: install packages
       package:
-        name: neovim
+        name: 
+          - neovim
+          - zsh
 
     - name: autoclean
       apt:
