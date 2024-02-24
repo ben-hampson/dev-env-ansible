@@ -66,12 +66,16 @@
         url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
         dest: /home/ben/
 
+    - name: unzip jetbrains mono nerd font
+      unarchive:
+        src: JetBrainsMono.zip
+        dest: /home/ben/JetBrainsMono
+
     - name: install jetbrains mono nerd font
       args:
         chdir: /home/ben
       shell: |
-        unzip JetBrainsMono.zip JetBrainsMono/
-        mkdir -p ~/.fonts
+        mkdir -p .fonts
         cp JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf .fonts/
         rm JetBrainsMono.zip
         rm -rf JetBrainsMono
