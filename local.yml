@@ -68,7 +68,7 @@
 
     - name: unzip jetbrains mono nerd font
       unarchive:
-        src: JetBrainsMono.zip
+        src: /home/ben/JetBrainsMono.zip
         dest: /home/ben/JetBrainsMono
 
     - name: install jetbrains mono nerd font
@@ -77,6 +77,4 @@
       shell: |
         mkdir -p .fonts
         cp JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf .fonts/
-        rm JetBrainsMono.zip
-        rm -rf JetBrainsMono
 
