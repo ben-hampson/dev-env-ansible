@@ -21,3 +21,10 @@
       apt:
         autoremove: yes
         purge: yes
+
+    - name: Ensure user Ben exists
+      ansible.builtin.user:
+        name: ben
+        state: present
+        shell: /bin/zsh
+        create_home: yes
