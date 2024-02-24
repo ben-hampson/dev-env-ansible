@@ -10,8 +10,8 @@
 
   tasks:
     - name: install packages
-      state: latest
       package:
+        state: latest
         name: 
           - neovim
           - zsh
