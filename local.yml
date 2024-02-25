@@ -21,6 +21,7 @@
           - i3
           - ripgrep
           - polybar
+          - feh
 
     - name: snap install apps
       community.general.snap:
@@ -97,5 +98,3 @@
       shell: |
         cp JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf .fonts/
         fc-cache -fv
-
-
