@@ -31,7 +31,9 @@
     - name: download dotfiles
       git:
         repo: https://github.com/ben-hampson/dotfiles.git
+        version: ubuntu2204server
         dest: /home/ben/dotfiles/
+        force: no
         clone: yes
         update: yes
 
