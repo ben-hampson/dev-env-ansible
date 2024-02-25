@@ -33,7 +33,7 @@
         repo: https://github.com/ben-hampson/dotfiles.git
         version: ubuntu2204server
         dest: /home/ben/dotfiles/
-        force: no
+        force: yes
         clone: yes
         update: yes
 
