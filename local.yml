@@ -2,6 +2,10 @@
 - hosts: localhost
   connection: true
   become: true
+  vars:
+      keyring_url: "https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2023.02.18_all.deb"
+      keyring_path: "/tmp/keyring.deb"
+      keyring_checksum: "sha256:a511ac5f10cd811f8a4ca44d665f2fa1add7a9f09bef238cdfad8461f5239cc4"
 
   pre_tasks:
     - name: pre-run | update package cache
@@ -98,3 +102,26 @@
       shell: |
         cp JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf .fonts/
         fc-cache -fv
+
+    - name: Download the sur5r keyring package
+      ansible.builtin.get_url:
+        url: "{{ keyring_url }}"
+        dest: "{{ keyring_path }}"
+        checksum: "{{ keyring_checksum }}"
+
+    - name: Install the sur5r keyring package
+      ansible.builtin.apt:
+        deb: "{{ keyring_path }}"
+
+    - name: Add the i3wm repository
+      ansible.builtin.apt_repository:
+        repo: "deb http://debian.sur5r.net/i3/ {{ ansible_distribution_release }} universe"
+        filename: 'sur5r-i3'
+        state: present
+        update_cache: yes
+
+    - name: Install i3 window manager
+      ansible.builtin.apt:
+        name: i3
+        state: latest
+        update_cache: yes
