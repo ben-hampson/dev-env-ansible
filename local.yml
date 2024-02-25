@@ -9,7 +9,7 @@
         update_cache: yes
 
   tasks:
-    - name: install packages
+    - name: apt install packages
       package:
         state: latest
         name: 
@@ -18,6 +18,17 @@
           - stow
           - wget
           - unzip
+          - i3
+          - ripgrep
+          - polybar
+
+    - name: snap install apps
+      community.general.snap:
+        name: 
+          - nvim
+          - alacritty
+          - firefox
+        classic: true
 
     - name: autoclean
       apt:
@@ -87,8 +98,4 @@
         cp JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf .fonts/
         fc-cache -fv
 
-    - name: snap install neovim
-      community.general.snap:
-        name: nvim
-        classic: true
 
