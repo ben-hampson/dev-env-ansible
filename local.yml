@@ -26,13 +26,13 @@
       ansible.builtin.apt_repository:
         repo: 'ppa:aslatter/ppa'
         state: present
+        codename: jammy
 
     - name: apt install alacritty
       package:
         state: latest
         name: alacritty
         update_cache: yes
-        default_release: jammy
 
     - name: install nix-env
       command: sh <(curl -L https://nixos.org/nix/install) --daemon
