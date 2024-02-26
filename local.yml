@@ -38,6 +38,11 @@
       # ansible.builtin.shell: sh <(curl -L https://nixos.org/nix/install) --daemon
       ansible.builtin.shell: curl -L https://nixos.org/nix/install | sh
 
+    - name: nix-env install apps
+      ansible.builtin.shell: |
+        nix-env -iA nixpkgs.i3
+        nix-env -iA nixpkgs.neovim
+
     - name: autoclean
       apt:
         autoclean: yes
