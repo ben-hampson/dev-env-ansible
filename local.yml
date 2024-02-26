@@ -24,7 +24,7 @@
 
     - name: add apt repo for alacritty
       ansible.builtin.apt_repository:
-        repo: ppa:aslatter/ppa
+        repo: 'ppa:aslatter/ppa'
         state: present
 
     - name: apt install alacritty
