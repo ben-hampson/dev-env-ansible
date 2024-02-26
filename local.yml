@@ -40,7 +40,12 @@
     # - name: nix-env install apps
     #   ansible.builtin.shell: |
     #     /home/ben/.nix-profile/bin/nix-env -iA nixpkgs.i3
+
     #     /home/ben/.nix-profile/bin/nix-env -iA nixpkgs.neovim
+    - name: Set shell to zsh
+      ansible.builtin.user:
+        name: bin
+        shell: /bin/zsh
 
     - name: autoclean
       apt:
