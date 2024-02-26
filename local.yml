@@ -35,7 +35,7 @@
         update_cache: yes
 
     - name: install nix-env
-      command: sh <(curl -L https://nixos.org/nix/install) --daemon
+      ansible.builtin.shell: sh <(curl -L https://nixos.org/nix/install) --daemon
 
     - name: autoclean
       apt:
