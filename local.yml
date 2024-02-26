@@ -26,6 +26,7 @@
           - ripgrep
           - polybar
           - feh
+          - rofi
 
     - name: snap install apps
       community.general.snap:
