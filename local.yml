@@ -35,10 +35,11 @@
         update_cache: yes
 
     - name: install nix-env
-      # ansible.builtin.shell: sh <(curl -L https://nixos.org/nix/install) --daemon
       ansible.builtin.shell: curl -L https://nixos.org/nix/install | sh
 
     - name: nix-env install apps
+      environment:
+        path: "{{ ansible_env.PATH }}:/home/ben/.nix-profile/bin"
       ansible.builtin.shell: |
         nix-env -iA nixpkgs.i3
         nix-env -iA nixpkgs.neovim
