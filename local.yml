@@ -32,6 +32,7 @@
         state: latest
         name: alacritty
         update_cache: yes
+        default_release: jammy
 
     - name: install nix-env
       command: sh <(curl -L https://nixos.org/nix/install) --daemon
