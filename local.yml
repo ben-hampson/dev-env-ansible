@@ -17,24 +17,28 @@
       package:
         state: latest
         name: 
-          - neovim
           - zsh
           - stow
           - wget
           - unzip
-          - i3
           - ripgrep
           - polybar
           - feh
           - rofi
 
-    - name: snap install apps
-      community.general.snap:
-        name: 
-          - nvim
-          - alacritty
-          - firefox
-        classic: true
+    - name: add apt repo for alacritty
+      ansible.builtin.apt_repository:
+        repo: ppa:aslatter/ppa
+        state: present
+
+    - name: apt install alacritty
+      package:
+        state: latest
+        name: alacritty
+        update_cache: yes
+
+    - name: install nix-env
+      command: sh <(curl -L https://nixos.org/nix/install) --daemon
 
     - name: autoclean
       apt:
@@ -104,25 +108,3 @@
         cp JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf .fonts/
         fc-cache -fv
 
-    - name: Download the sur5r keyring package
-      ansible.builtin.get_url:
-        url: "{{ keyring_url }}"
-        dest: "{{ keyring_path }}"
-        checksum: "{{ keyring_checksum }}"
-
-    - name: Install the sur5r keyring package
-      ansible.builtin.apt:
-        deb: "{{ keyring_path }}"
-
-    - name: Add the i3wm repository
-      ansible.builtin.apt_repository:
-        repo: "deb http://debian.sur5r.net/i3/ {{ ansible_distribution_release }} universe"
-        filename: 'sur5r-i3'
-        state: present
-        update_cache: yes
-
-    - name: Install i3 window manager
-      ansible.builtin.apt:
-        name: i3
-        state: latest
-        update_cache: yes
