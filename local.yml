@@ -3,4 +3,4 @@
   roles:
     - role: nix-install
       nix_commands:
-        - "nix-shell -p nix-info --command nix-info" 
+        - "nix-env -iA nixpkgs.i3 nixpkgs.neovim" 
