@@ -34,10 +34,14 @@
         name: alacritty
         update_cache: yes
 
+    - name: prep for nix-env install
+      ansible.builtin.shell: install -d -m755 -o $(id -u) -g $(id -g) /nix
+      become: true
+      tags:
+        - nix
+
     - name: install nix-env
-      ansible.builtin.shell: |
-        sudo install -d -m755 -o $(id -u) -g $(id -g) /nix
-        curl -L https://nixos.org/nix/install | sh
+      ansible.builtin.shell: curl -L https://nixos.org/nix/install | sh
       tags:
         - nix
 
