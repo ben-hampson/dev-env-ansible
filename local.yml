@@ -183,8 +183,6 @@
           git:
             repo: https://github.com/asdf-vm/asdf.git
             dest: /home/ben/.asdf
-          tags:
-            - asdf
             
         - name: Install requirements for python and asdf
           package:
@@ -213,6 +211,9 @@
           shell: |
             asdf install python latest:3.8
             asdf install python latest:3.11
+
+        - name: Set global Python
+          command: asdf global python $(asdf list python | grep 3.8)
 
     - name: Poetry
       tags:
