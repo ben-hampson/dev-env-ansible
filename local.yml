@@ -257,6 +257,7 @@
 
     - name: Homebrew install programs
       shell: brew install fzf
+      executable: /bin/zsh
       become: yes
       become_user: ben
       tags:
