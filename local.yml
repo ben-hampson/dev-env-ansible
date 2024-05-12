@@ -167,6 +167,11 @@
         clone: yes
         update: yes
 
+    - name: Set ownership for ~/.asdf
+      file:
+        path: /home/ben/.asdf
+        owner: ben
+
     - name: Download asdf plugin for oh-my-zsh
       git:
         repo: https://github.com/asdf-vm/asdf.git
