@@ -256,7 +256,7 @@
           become_user: ben
 
     - name: Homebrew install programs
-      shell: /home/linuxbrew/.linuxbrew/bin/brew install fzf
+      shell: /home/linuxbrew/.linuxbrew/bin/brew install fzf poetry
       args:
         executable: /bin/zsh
       become: yes
