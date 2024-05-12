@@ -239,3 +239,13 @@
           become: yes
           become_user: ben
 
+    - name: Homebrew
+      tags:
+        - homebrew
+      block:
+        - name: Download script
+          get_url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+          dest: /tmp/homebrew-install.sh
+      
+        - name: Run Homebrew install script
+          shell: /tmp/homebrew-install.sh
