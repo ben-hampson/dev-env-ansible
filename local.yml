@@ -107,9 +107,9 @@
         cp JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf .fonts/
         fc-cache -fv
 
-    - name: Create ~/.local/bin/nvim
+    - name: Create ~/.local/bin
       file:
-        path: /home/ben/.local/bin/nvim
+        path: /home/ben/.local/bin
         state: directory
         owner: ben
       tags:
@@ -118,7 +118,7 @@
     - name: Install neovim
       ansible.builtin.get_url:
         url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-        dest: /home/ben/.local/bin/nvim/nvim
+        dest: /home/ben/.local/bin/nvim
         mode: 0755
         owner: ben
       tags:
