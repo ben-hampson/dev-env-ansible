@@ -217,28 +217,6 @@
         - name: Set global Python
           command: asdf global python $(asdf list python | grep 3.8)
 
-    - name: Poetry
-      tags:
-        - poetry
-      block:
-        - name: Make /home/ben/tmp/
-          file:
-            path: /home/ben/tmp
-            owner: ben
-            state: directory
-
-        - name: Download script to install poetry
-          get_url:
-            url: https://install.python-poetry.org
-            dest: /home/ben/tmp/poetry-install.py
-            mode: 0755
-            owner: ben
-
-        - name: Install poetry
-          command: "/home/ben/.asdf/shims/python3.8 /home/ben/tmp/poetry-install.py"
-          become: yes
-          become_user: ben
-
     - name: Homebrew
       tags:
         - homebrew
@@ -256,7 +234,7 @@
           become_user: ben
 
     - name: Homebrew install programs
-      shell: /home/linuxbrew/.linuxbrew/bin/brew install fzf poetry
+      shell: /home/linuxbrew/.linuxbrew/bin/brew install fzf poetry docker docker-compose tmux kubernetes-cli
       args:
         executable: /bin/zsh
       become: yes
