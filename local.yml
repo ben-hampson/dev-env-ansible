@@ -182,7 +182,7 @@
       tags:
         - asdf
         
-    - name: Install requiremenets for python and asdf
+    - name: Install requirements for python and asdf
       package:
         state: latest
         name:
@@ -201,4 +201,14 @@
           - libxmlsec1-dev
           - libffi-dev
           - liblzma-dev
+
+    - name: Download script to install poetry
+      get_url:
+        url: https://install.python-poetry.org
+        dest: /tmp/poetry-install.py
+        mode: 0755
+        owner: ben
+
+    - name: Install poetry
+      command: python /tmp/poetry-install.py
 
