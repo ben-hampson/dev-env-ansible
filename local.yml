@@ -13,8 +13,6 @@
       package:
         state: latest
         name: 
-          - build-essential
-          - zlib1g-dev
           - zsh
           - stow
           - wget
@@ -184,4 +182,23 @@
       tags:
         - asdf
         
+    - name: Install requiremenets for python and asdf
+      package:
+        state: latest
+        name:
+          - build-essential
+          - libssl-dev
+          - zlib1g-dev
+          - libbz2-dev
+          - libreadline-dev
+          - libsqlite3-dev
+          - wget
+          - llvm
+          - libncursesw5-dev
+          - xz-utils
+          - tk-dev
+          - libxml2-dev
+          - libxmlsec1-dev
+          - libffi-dev
+          - liblzma-dev
 
