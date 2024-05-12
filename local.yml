@@ -158,3 +158,20 @@
       tags:
         - i3
 
+    - name: Download asdf
+      git:
+        repo: https://github.com/asdf-vm/asdf.git
+        version: v0.14.0
+        dest: /home/ben/.asdf
+        force: yes
+        clone: yes
+        update: yes
+
+    - name: Download asdf plugin for oh-my-zsh
+      git:
+        repo: https://github.com/asdf-vm/asdf.git
+        dest: /home/ben/.asdf
+      tags:
+        - asdf
+        
+
