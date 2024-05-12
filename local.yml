@@ -251,5 +251,7 @@
             mode: 0755
       
         - name: Run Homebrew install script
-          shell: /tmp/homebrew-install.sh
+          shell: NONINTERACTIVE=1 && /tmp/homebrew-install.sh
+          become: yes
+          become_user: ben
 
