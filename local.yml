@@ -208,6 +208,7 @@
           command: asdf plugin add python
 
         - name: Install python 3.8 and 3.11
+          executable: /bin/zsh
           shell: |
             asdf install python latest:3.8
             asdf install python latest:3.11
@@ -227,5 +228,6 @@
             owner: ben
 
         - name: Install poetry
+          executable: /bin/zsh
           shell: python /tmp/poetry-install.py
 
