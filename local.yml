@@ -229,7 +229,5 @@
             owner: ben
 
         - name: Install poetry
-          shell: /home/ben/.asdf/python3.8 /tmp/poetry-install.py
-          args:
-            executable: /bin/zsh
+          command: /home/ben/.asdf/python3.8 /tmp/poetry-install.py
 
