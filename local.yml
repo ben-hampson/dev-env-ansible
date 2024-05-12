@@ -111,13 +111,14 @@
       file:
         path: /home/ben/.local/bin/nvim
         state: directory
+        owner: ben
       tags:
         - nvim
 
     - name: Install neovim
       ansible.builtin.get_url:
         url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-        dest: /home/ben/.local/bin/nvim/nvim.appimage
+        dest: /home/ben/.local/bin/nvim/nvim
         mode: 0755
         owner: ben
       tags:
