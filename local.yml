@@ -148,4 +148,6 @@
       ansible.builtin.package:
         name: i3
         update_cache: true
+      tags:
+        - i3
 
