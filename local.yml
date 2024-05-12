@@ -13,6 +13,8 @@
       package:
         state: latest
         name: 
+          - build-essential
+          - zlib1g-dev
           - zsh
           - stow
           - wget
