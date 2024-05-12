@@ -135,7 +135,7 @@
 
     - name: Install i3 keyring.deb
       apt:
-        deb: "/temp/i3-keyring.deb"
+        deb: "/tmp/i3-keyring.deb"
       tags:
         - i3
         
