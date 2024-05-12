@@ -256,7 +256,9 @@
           become_user: ben
 
     - name: Homebrew install programs
-      command: brew install fzf
+      shell: brew install fzf
+      become: yes
+      become_user: ben
       tags:
         - brew
 
