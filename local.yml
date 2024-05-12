@@ -119,6 +119,7 @@
         url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
         dest: /home/ben/.local/bin/nvim/nvim.appimage
         mode: 0755
+        owner: ben
       tags:
         - nvim
         
