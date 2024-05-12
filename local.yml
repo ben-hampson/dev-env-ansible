@@ -78,6 +78,11 @@
         clone: yes
         update: yes
 
+    - name: set ownership of dotfiles
+      file:
+        path: /home/ben/dotfiles
+        owner: ben
+
     - name: stow dotfiles
       command: stow .
       args:
@@ -118,7 +123,7 @@
     - name: Install neovim
       ansible.builtin.get_url:
         url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-        dest: /home/ben/.local/bin/nvim
+        dest: /usr/bin/nvim
         mode: 0755
         owner: ben
       tags:
