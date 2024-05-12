@@ -259,8 +259,6 @@
       shell: /home/linuxbrew/.linuxbrew/bin/brew install fzf
       args:
         executable: /bin/zsh
-      become: yes
-      become_user: ben
       tags:
         - brew
 
