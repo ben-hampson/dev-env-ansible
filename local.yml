@@ -244,8 +244,12 @@
         - homebrew
       block:
         - name: Download script
-          get_url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-          dest: /tmp/homebrew-install.sh
+          get_url: 
+            url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+            dest: /tmp/homebrew-install.sh
+            owner: ben
+            mode: 0755
       
         - name: Run Homebrew install script
           shell: /tmp/homebrew-install.sh
+
