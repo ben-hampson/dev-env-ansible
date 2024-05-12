@@ -82,6 +82,7 @@
       file:
         path: /home/ben/dotfiles
         owner: ben
+        recurse: true
 
     - name: stow dotfiles
       command: stow .
@@ -117,6 +118,7 @@
         path: /home/ben/.local/bin
         state: directory
         owner: ben
+        recurse: true
       tags:
         - nvim
 
@@ -171,6 +173,7 @@
       file:
         path: /home/ben/.asdf
         owner: ben
+        recurse: true
 
     - name: Download asdf plugin for oh-my-zsh
       git:
