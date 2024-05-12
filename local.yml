@@ -109,7 +109,7 @@
 
     - name: Create ~/.local/bin/nvim
       file:
-        path: /home/ben/.local/nvim
+        path: /home/ben/.local/bin/nvim
         state: directory
       tags:
         - nvim
