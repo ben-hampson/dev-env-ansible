@@ -136,6 +136,8 @@
     - name: Install i3 keyring.deb
       apt:
         deb: "/temp/i3-keyring.deb"
+      tags:
+        - i3
         
     - name: Add i3 apt repository
       ansible.builtin.apt_repository:
