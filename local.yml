@@ -221,13 +221,19 @@
       tags:
         - poetry
       block:
+        - name: Make /home/ben/tmp/
+          file:
+            path: /home/ben/tmp
+            owner: ben
+            state: directory
+
         - name: Download script to install poetry
           get_url:
             url: https://install.python-poetry.org
-            dest: /tmp/poetry-install.py
+            dest: /home/ben/tmp/poetry-install.py
             mode: 0755
             owner: ben
 
         - name: Install poetry
-          command: /home/ben/.asdf/python3.8 /tmp/poetry-install.py
+          command: /home/ben/.asdf/python3.8 /home/ben/tmp/poetry-install.py
 
