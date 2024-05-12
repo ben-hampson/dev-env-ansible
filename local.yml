@@ -36,7 +36,7 @@
 
     - name: Set shell to zsh
       ansible.builtin.user:
-        name: bin
+        name: ben
         shell: /bin/zsh
 
     - name: autoclean
@@ -48,7 +48,7 @@
         autoremove: yes
         purge: yes
 
-    - name: download dotfiles
+    - name: Download dotfiles
       git:
         repo: https://github.com/ben-hampson/dotfiles.git
         version: ubuntu2204server
@@ -57,21 +57,21 @@
         clone: yes
         update: yes
 
-    - name: download zsh-autosuggestions
+    - name: Download zsh-autosuggestions
       git:
         repo: https://github.com/zsh-users/zsh-autosuggestions.git
         dest: /home/ben/dotfiles/.oh-my-zsh/custom/plugins/zsh-autosuggestions
         clone: yes
         update: yes
           
-    - name: download zsh-syntax-highlighting
+    - name: Download zsh-syntax-highlighting
       git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
         dest: /home/ben/dotfiles/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
         clone: yes
         update: yes
           
-    - name: download powerlevel10k theme
+    - name: Download powerlevel10k theme
       git:
         repo: https://github.com/romkatv/powerlevel10k.git
         dest: /home/ben/dotfiles/.oh-my-zsh/custom/themes/powerlevel10k
@@ -93,16 +93,23 @@
         path: /home/ben/.fonts
         state: directory
 
-    - name: unzip jetbrains mono nerd font
+    - name: Unzip jetbrains mono nerd font
       unarchive:
         src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
         dest: /home/ben/JetBrainsMono
         creates: /home/ben/JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf 
         remote_src: yes
 
-    - name: install jetbrains mono nerd font
+    - name: Install jetbrains mono nerd font
       args:
         chdir: /home/ben
       shell: |
         cp JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf .fonts/
         fc-cache -fv
+
+    - name: Install neovim
+      ansible.builtin.get_url:
+        url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+        dest: ~/.local/bin/nvim/nvim.appimage
+        mode: 0755
+        
