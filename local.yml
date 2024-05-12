@@ -160,55 +160,71 @@
       tags:
         - i3
 
-    - name: Download asdf
-      git:
-        repo: https://github.com/asdf-vm/asdf.git
-        version: v0.14.0
-        dest: /home/ben/.asdf
-        force: yes
-        clone: yes
-        update: yes
-
-    - name: Set ownership for ~/.asdf
-      file:
-        path: /home/ben/.asdf
-        owner: ben
-        recurse: true
-
-    - name: Download asdf plugin for oh-my-zsh
-      git:
-        repo: https://github.com/asdf-vm/asdf.git
-        dest: /home/ben/.asdf
+    - name: asdf and Python
       tags:
-        - asdf
-        
-    - name: Install requirements for python and asdf
-      package:
-        state: latest
-        name:
-          - build-essential
-          - libssl-dev
-          - zlib1g-dev
-          - libbz2-dev
-          - libreadline-dev
-          - libsqlite3-dev
-          - wget
-          - llvm
-          - libncursesw5-dev
-          - xz-utils
-          - tk-dev
-          - libxml2-dev
-          - libxmlsec1-dev
-          - libffi-dev
-          - liblzma-dev
+        - python
+      block: 
+        - name: Download asdf
+          git:
+            repo: https://github.com/asdf-vm/asdf.git
+            version: v0.14.0
+            dest: /home/ben/.asdf
+            force: yes
+            clone: yes
+            update: yes
 
-    - name: Download script to install poetry
-      get_url:
-        url: https://install.python-poetry.org
-        dest: /tmp/poetry-install.py
-        mode: 0755
-        owner: ben
+        - name: Set ownership for ~/.asdf
+          file:
+            path: /home/ben/.asdf
+            owner: ben
+            recurse: true
 
-    - name: Install poetry
-      command: python /tmp/poetry-install.py
+        - name: Download asdf plugin for oh-my-zsh
+          git:
+            repo: https://github.com/asdf-vm/asdf.git
+            dest: /home/ben/.asdf
+          tags:
+            - asdf
+            
+        - name: Install requirements for python and asdf
+          package:
+            state: latest
+            name:
+              - build-essential
+              - libssl-dev
+              - zlib1g-dev
+              - libbz2-dev
+              - libreadline-dev
+              - libsqlite3-dev
+              - wget
+              - llvm
+              - libncursesw5-dev
+              - xz-utils
+              - tk-dev
+              - libxml2-dev
+              - libxmlsec1-dev
+              - libffi-dev
+              - liblzma-dev
+
+        - name: Install asdf python plugin
+          command: asdf plugin add python
+
+        - name: Install python 3.8 and 3.11
+          command:
+            - asdf install python latest:3.8
+            - asdf install python latest:3.11
+
+    - name: Poetry
+      tags:
+        - poetry
+      block:
+        - name: Download script to install poetry
+          get_url:
+            url: https://install.python-poetry.org
+            dest: /tmp/poetry-install.py
+            mode: 0755
+            owner: ben
+
+        - name: Install poetry
+          command: python /tmp/poetry-install.py
 
