@@ -231,7 +231,9 @@
               - liblzma-dev
 
         - name: Install asdf python plugin
-          command: asdf plugin add python
+          shell: asdf plugin add python
+          args:
+            executable: /bin/zsh
           become: true
           become_user: ben
 
