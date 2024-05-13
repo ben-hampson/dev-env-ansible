@@ -232,6 +232,8 @@
 
         - name: Install asdf python plugin
           command: asdf plugin add python
+          become: true
+          become_user: ben
 
         - name: Install python 3.8 and 3.11
           shell: |
