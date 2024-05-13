@@ -199,11 +199,6 @@
         #     clone: yes
         #     update: yes
 
-        # - name: Set ownership for ~/.asdf
-        #   file:
-        #     path: /home/ben/.asdf
-        #     owner: ben
-        #     recurse: true
 
         - name: Download asdf plugin for oh-my-zsh
           git:
@@ -229,6 +224,12 @@
               - libxmlsec1-dev
               - libffi-dev
               - liblzma-dev
+
+        - name: Set ownership for ~/.asdf
+          file:
+            path: /home/ben/.asdf
+            owner: ben
+            recurse: true
 
         - name: Install asdf python plugin
           shell: asdf plugin add python
