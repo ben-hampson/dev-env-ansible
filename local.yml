@@ -236,6 +236,8 @@
             asdf install python latest:3.11
           args:
             executable: /bin/zsh
+          become: true
+          become_user: ben
 
         - name: Set global Python
           command: asdf global python $(asdf list python | grep 3.8)
