@@ -240,4 +240,4 @@
           become_user: ben
 
         - name: Set global Python
-          command: asdf global python $(asdf list python | grep 3.8)
+          command: /home/ben/.asdf/bin/asdf global python $(asdf list python | grep 3.8)
