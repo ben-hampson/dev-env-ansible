@@ -232,8 +232,8 @@
 
         - name: Install python 3.8 and 3.11
           shell: |
-            asdf install python latest:3.8
-            asdf install python latest:3.11
+            /home/ben/.asdf/bin/asdf install python latest:3.8
+            /home/ben/.asdf/bin/asdf install python latest:3.11
           args:
             executable: /bin/zsh
           become: true
