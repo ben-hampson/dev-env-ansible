@@ -190,15 +190,12 @@
       tags:
         - python
       block: 
-        # - name: Download asdf
-        #   git:
-        #     repo: https://github.com/asdf-vm/asdf.git
-        #     version: v0.14.0
-        #     dest: /home/ben/.asdf
-        #     force: yes
-        #     clone: yes
-        #     update: yes
-
+        - name: Homebrew install asdf
+          shell: /home/linuxbrew/.linuxbrew/bin/brew asdf
+          args:
+            executable: /bin/zsh
+          become: yes
+          become_user: ben
 
         - name: Download asdf plugin for oh-my-zsh
           git:
