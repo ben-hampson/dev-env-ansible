@@ -241,5 +241,7 @@
 
         - name: Set global Python
           command: /home/ben/.asdf/bin/asdf global python $(asdf list python | grep 3.8)
+          args:
+            executable: /bin/zsh
           become: true
           become_user: ben
