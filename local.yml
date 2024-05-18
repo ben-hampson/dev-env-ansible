@@ -197,11 +197,6 @@
           become: yes
           become_user: ben
 
-        - name: Download asdf plugin for oh-my-zsh
-          git:
-            repo: https://github.com/asdf-vm/asdf.git
-            dest: /home/ben/.asdf
-            
         - name: Install requirements for python and asdf
           package:
             state: latest
