@@ -191,7 +191,7 @@
         - python
       block: 
         - name: Homebrew install asdf
-          shell: /home/linuxbrew/.linuxbrew/bin/brew asdf
+          shell: /home/linuxbrew/.linuxbrew/bin/brew install asdf
           args:
             executable: /bin/zsh
           become: yes
