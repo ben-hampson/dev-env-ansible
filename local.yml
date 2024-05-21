@@ -232,15 +232,15 @@
 
         - name: Install python 3.8 and 3.11
           shell: |
-            /home/ben/.asdf/bin/asdf install python latest:3.8
-            /home/ben/.asdf/bin/asdf install python latest:3.11
+            /home/linuxbrew/.linuxbrew/bin/asdf install python latest:3.8
+            /home/linuxbrew/.linuxbrew/bin/asdf install python latest:3.11
           args:
             executable: /bin/zsh
           become: true
           become_user: ben
 
         - name: Set global Python
-          command: /home/ben/.asdf/bin/asdf global python $(asdf list python | grep 3.8)
+          command: /home/linuxbrew/.linuxbrew/bin/asdf global python $(asdf list python | grep 3.8)
           args:
             executable: /bin/zsh
           become: true
