@@ -224,7 +224,7 @@
             recurse: true
 
         - name: Install asdf python plugin
-          shell: /home/ben/.asdf/bin/asdf plugin add python
+          shell: /home/linuxbrew/.linuxbrew/bin/asdf plugin add python
           args:
             executable: /bin/zsh
           become: true
