@@ -51,7 +51,7 @@
     - name: Download dotfiles
       git:
         repo: https://github.com/ben-hampson/dotfiles.git
-        version: ubuntu2204server
+        version: mint21.3
         dest: /home/ben/dotfiles/
         force: yes
         clone: yes
