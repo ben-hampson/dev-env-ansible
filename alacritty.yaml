@@ -1,0 +1,12 @@
+---
+- name: add apt repo for alacritty
+  ansible.builtin.apt_repository:
+    repo: 'ppa:aslatter/ppa'
+    state: present
+    codename: jammy
+
+- name: apt install alacritty
+  package:
+    state: latest
+    name: alacritty
+    update_cache: yes

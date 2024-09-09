@@ -1,0 +1,17 @@
+- name: Create ~/.local/bin
+  file:
+    path: /home/ben/.local/bin
+    state: directory
+    owner: ben
+    recurse: true
+  tags:
+    - nvim
+
+- name: Install neovim
+  ansible.builtin.get_url:
+    url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    dest: /usr/bin/nvim
+    mode: 0755
+    owner: ben
+  tags:
+    - nvim

@@ -1,0 +1,9 @@
+- name: Homebrew install docker
+  shell: /home/linuxbrew/.linuxbrew/bin/brew install docker docker-compose
+  args:
+    executable: /bin/zsh
+  become: yes
+  become_user: ben
+  tags:
+    - docker
+

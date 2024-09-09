@@ -1,0 +1,54 @@
+---
+- hosts: localhost
+  connection: true
+  become: true
+
+  tasks:
+    - name: pre-run | update package cache
+      apt:
+        update_cache: yes
+
+    - name: apt install packages
+      package:
+        state: latest
+        name: 
+          - zsh
+          - stow
+          - wget
+          - unzip
+          - ripgrep
+          - polybar
+          - feh
+
+    - name: Alacritty
+      include_tasks: alacritty.yaml
+
+    - name: dotfiles
+      include_tasks: dotfiles.yaml
+
+    - name: Docker
+      include_tasks: docker.yaml
+
+    - name: Fonts
+      include_tasks: fonts.yaml
+
+    - name: Homebrew
+      include_tasks: homebrew.yaml
+
+    - name: Neovim
+      include_tasks: neovim.yaml
+
+    - name: Python
+      include_tasks: python.yaml
+
+    - name: Shell
+      include_tasks: shell.yaml
+
+    - name: autoclean
+      apt:
+        autoclean: yes
+
+    - name: autoremove orphan packages
+      apt:
+        autoremove: yes
+        purge: yes

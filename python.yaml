@@ -1,0 +1,66 @@
+---
+- name: asdf and Python
+  tags:
+    - python
+  block: 
+    - name: Install requirements for python and asdf
+      package:
+        state: latest
+        name:
+          - build-essential
+          - libssl-dev
+          - zlib1g-dev
+          - libbz2-dev
+          - libreadline-dev
+          - libsqlite3-dev
+          - wget
+          - llvm
+          - libncursesw5-dev
+          - xz-utils
+          - tk-dev
+          - libxml2-dev
+          - libxmlsec1-dev
+          - libffi-dev
+          - liblzma-dev
+
+    - name: Install asdf
+      shell: /home/linuxbrew/.linuxbrew/bin/brew install asdf
+      args:
+        executable: /bin/zsh
+      become: yes
+      become_user: ben
+
+    - name: Install poetry
+      shell: /home/linuxbrew/.linuxbrew/bin/brew install poetry
+      args:
+        executable: /bin/zsh
+      become: yes
+
+    - name: Set ownership for ~/.asdf
+      file:
+        path: /home/ben/.asdf
+        owner: ben
+        recurse: true
+
+    - name: Install asdf python plugin
+      shell: /home/linuxbrew/.linuxbrew/bin/asdf plugin add python
+      args:
+        executable: /bin/zsh
+      become: true
+      become_user: ben
+
+    - name: Install python 3.8 and 3.11
+      shell: |
+        /home/linuxbrew/.linuxbrew/bin/asdf install python latest:3.8
+        /home/linuxbrew/.linuxbrew/bin/asdf install python latest:3.11
+      args:
+        executable: /bin/zsh
+      become: true
+      become_user: ben
+
+    - name: Set global Python
+      command: /home/linuxbrew/.linuxbrew/bin/asdf global python $(asdf list python | grep 3.8)
+      args:
+        executable: /bin/zsh
+      become: true
+      become_user: ben
